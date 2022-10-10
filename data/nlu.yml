@@ -1,0 +1,284 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hI
+    - hahaha
+    - Laugh
+    - >.<
+    - 😊
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Yes sure
+    - yeah
+    - It would be nice
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - I refuse!
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - You're a loser.
+- intent: thankyou
+  examples: |
+    - thanks
+    - thank you
+    - thanks friend
+    - Thank you for your help.
+- intent: search_concerts
+  examples: |
+    - what concerts are there recently?
+    - Find me some good concerts
+    - Find me some concerts
+    - Show me concerts
+    - search concerts
+    - The concert, where?
+    - Are there any concerts in Nanjing?
+- intent: search_venues
+  examples: |
+    - Find me some good venues
+    - Find me some venues
+    - Show me venues
+    - search venues
+    - what's a good venue?
+    - find me some venues
+    - find me some good venues
+- intent: compare_reviews
+  examples: |
+    - compare reviews
+    - show me a comparision of the reviews
+- intent: how_to_get_started
+  examples: |
+    - How do I get started
+    - what can I do
+    - start
+    - What can you do
+    - How can you help me
+    - What you can do for me
+    - what can you do
+    - What can you do?
+    - what can you do?
+    - menu
+    - help
+    - Is there anything you can do for me?
+    - What functions do you have?
+- intent: request_book_concerts
+  examples: |
+    - I want to book a [Big Arena](concertname) concert ticket.
+    - i want a ticket for [Death](concertname) concert ticket.
+    - Can you help me book a [Big Arena](concertname) concert?
+    - im looking for a [Rock Cellar](concertname) concert
+    - Can you help me book a ticket for [Rock Cellar](concertname) concert?
+    - im looking for a [Big Arena](concertname) concert
+    - I want reserve a [Berlin](concertname) concert ticket.
+    - Can you help me book a ticket for concert?
+    - im looking for a concert
+    - I want reserve a concert ticket.
+    - Can you help me book a concert?
+    - Can you help me reserve a concert?
+    - I want a ticket for [London](concertname) concert
+    - I want to reserve a ticket
+    - I want to reserve a ticket for [Big Arena](concertname) concert
+    - I want to book a ticket
+    - i want to book a ticket for [big arena](concertname) concert
+    - I want to book a ticket for [mexico](concertname) concert
+    - I want to reserve a ticket for [mexico](concertname) concert
+    - I want to book a ticket for [big arena](concertname) ticket
+    - I want to reserve a ticket for [mexico](concertname) concert.
+    - I want to reserve a ticket for [big arena](concertname) concert
+    - i want to reserve a ticket for [big arena](concertname) concert.
+    - I want to book a ticket for [big arena](concertname) concert.
+- intent: inform
+  examples: |
+    - im [bossy](name), my email address is [755018730@qq.com](email) and im looking for a [Big Arena](concertname) concert
+    - im [Mike Jordan](name), my email address is [5555@mm.com](email)
+    - my name is [Mike Jordan](name) and my email address is [5555@mm.com](email)
+    - my name is [Sharen Stephen](name)
+    - my name is [bob](name)
+    - my email address is [7669@firefox.com](email)
+    - my email is [7669@firefox.com](email)
+    - [smith@student.oulu.fi](email)
+    - my email address is [BoshuaiYe@student.oulu.fi](email)
+    - Here is my email address [yebs@xinlang.com](email)
+    - im [Mike](name)
+    - I am [Boshuai Ye](name)
+    - I'm [Mike](name) and here is my email [8888@333.com](email)
+    - I want to reserve a [Mexico](concertname) concert
+    - [Big Arena](concertname) concert, please
+    - a [Rock Cellar](concertname) concert
+    - a ticket for [Mexico](concertname) concert, please
+    - I am [Smith](name) and I want to reserve a ticket for [Big Arena](concertname) concert
+    - My name is (Stephen), I am looing for a ticket for [Mexico](concertname) concert
+    - my email address is [guptarohit@csharpcorner.com](email), and im looking for [Beijing](concertname) concert
+    - Im going to reserve a ticket for [Shanghai](concertname) concert and here is my email address [ybpssy@163.com](email)
+    - [mexico](concertname) concert
+    - I wound like a [third](ticket_type) seat
+    - i want to reserve a [second](ticket_type) seat
+    - i want a [first](ticket_type) seat
+    - i want a [second](ticket_type) seat
+    - i want a [third](ticket_type) seat
+    - [first](ticket_type) seat is good
+    - [second](ticket_type) seat is good
+    - [first](ticket_type)
+    - [second](ticket_type)
+    - [third](ticket_type)
+    - [first](ticket_type) class
+    - [second](ticket_type) class
+    - [third](ticket_type) class
+    - book for [first](ticket_type) seat
+    - book for [second](ticket_type) seat
+    - book for [third](ticket_type) class seat
+    - reserve for [third](ticket_type) class seat
+    - [first](ticket_type) class seat
+    - my name is [bossy](name)
+    - My name is CH.
+    - My email address is [7666@qq.com](email)
+- intent: chitchat
+  examples: |
+    - can you share your boss with me?
+    - i want to get to know your owner
+    - i want to know the company which designed you
+    - i want to know the company which generated you
+    - i want to know the company which invented you
+    - i want to know who invented you
+    - May I ask who invented you?
+    - please tell me the company who created you
+    - please tell me who created you
+    - tell me more about your creators
+    - tell me more about your founders
+    - Ahoy matey how are you?
+    - are you alright
+    - are you having a good day
+    - Are you ok?
+    - are you okay
+    - Do you feel good?
+    - how are things going
+    - how are things with you?
+    - How are things?
+    - how are you
+    - how are you doing
+    - how are you doing this morning
+    - how are you feeling
+    - how are you today
+    - How are you?
+    - How is the weather today?
+    - What's the weather like?
+    - How is the weather?
+    - What is the weather at your place?
+    - Do you have good weather?
+    - Is it raining?
+    - What's it like out there?
+    - Is it hot or cold?
+    - Beautiful day, isn't it?
+    - What's the weather forecast?
+    - Is it quite breezy outside?
+    - What is your name?
+    - what's your name?
+    - Where are you from?
+    - I love you
+    - Tell me a joke.
+    - what‘s your name
+    - You're a fool.
+    - You're so cute.
+    - 你是谁
+    - You can go for a walk.
+- intent: stop
+  examples: |
+    - ok then you cant help me
+    - that was shit, you're not helping
+    - you can't help me
+    - you can't help me with what i need
+    - i guess you can't help me then
+    - ok i guess you can't help me
+    - that's not what i want
+    - ok, but that doesnt help me
+    - this is leading to nothing
+    - this conversation is not really helpful
+    - you cannot help me with what I want
+    - I think you cant help me
+    - hm i don't think you can do what i want
+    - stop
+    - stop go back
+    - do you get anything?
+    - and you call yourself bot company? pff
+    - and that's it?
+    - nothing else?
+- intent: nlu_fallback
+  examples: |
+    - fuck you
+    - ¿Cómo estás
+    - 你今天吃abcd了吗
+    - ?
+    - *$%#&
+    - [An idiot](concertname)
+    - And in Paris?
+- intent: request_artificial_service
+  examples: |
+    - I need a artivicial service
+    - I need artivicial services
+    - Put me in touch with human service.
+    - i want a aritificial service
+    - How about manual customer service?
+- intent: request_order
+  examples: |
+    - i want to track an order
+    - i want to track my order
+    - I want to track an order.
+    - i want to track an order.
+- intent: inform_order_id
+  examples: |
+    - 432
+    - [3](order_id)
+    - my order id is [1](order_id)
+    - 877
+    - 1
+    - 2
+    - 3
+    - 5
+    - 8
+    - 12
+    - my order id is [2](order_id)
+    - my order id is [6](order_id)
+    - my order id is [1664799066](order_id)
+    - 6

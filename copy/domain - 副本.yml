@@ -1,0 +1,117 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm
+- greet
+- goodbye
+- deny
+- bot_challenge
+- thankyou
+- search_concerts
+- search_venues
+- compare_reviews
+- how_to_get_started
+- request_book_concerts
+- inform
+- chitchat
+- stop
+- nlu_fallback
+- request_artificial_service
+entities:
+- name
+- email
+- concertname
+- ticket_type
+- like_music
+slots:
+  concerts:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+  venues:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+  likes_music:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+  name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: name
+  email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: email
+  concertname:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: concertname
+  ticket_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: ticket_type
+responses:
+  utter_greet:
+  - text: Hey there!
+  utter_goodbye:
+  - text: Goodbye :(
+  utter_default:
+  - text: Sorry, I didn't get that, can you rephrase?
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_get_started:
+  - text: I can help you find concerts and venues. Do you like music?
+  utter_awesome:
+  - text: Awesome! You can ask me things like "Find me some concerts" or "What's a good venue"
+  utter_unvalid_email:
+  - text: Wrong email format
+  utter_wrong_concertname:
+  - text: We don't have such a concert'
+  utter_submit:
+  - text: All done!
+  utter_slots_values:
+  - text: |-
+      I am going to help you reserve a ticket using the following parameters:
+       - name: {name}
+       - email: {email}
+       - name of concert: {concertname}
+       - type of seat: {ticket_type}
+  utter_noworries:
+  - text: You are welcome :)
+  utter_chitchat:
+  - text: chitchat
+  utter_ask_continue:
+  - text: Do you want to continue?
+actions:
+- validate_information_form
+- action_search_concerts
+- action_search_venues
+- action_show_concert_reviews
+- action_show_venue_reviews
+- action_set_music_preference
+- action_artificial_service
+- action_remaining_seats
+forms:
+  information_form:
+    ignored_intents:
+    - chitchat
+    required_slots:
+    - name
+    - email
+    - concertname
+    - ticket_type

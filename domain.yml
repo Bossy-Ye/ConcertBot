@@ -1,0 +1,187 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- affirm:
+    use_entities: []
+- greet:
+    use_entities: []
+- goodbye:
+    use_entities: []
+- deny:
+    use_entities: []
+- bot_challenge:
+    use_entities: []
+- thankyou:
+    use_entities: []
+- search_concerts:
+    use_entities: []
+- search_venues:
+    use_entities: []
+- compare_reviews:
+    use_entities: []
+- how_to_get_started:
+    use_entities: []
+- request_book_concerts:
+    use_entities: true
+- inform:
+    use_entities: true
+- chitchat:
+    use_entities: []
+- stop:
+    use_entities: []
+- nlu_fallback:
+    use_entities: []
+- request_artificial_service:
+    use_entities: []
+- request_order:
+    use_entities: true
+- inform_order_id:
+    use_entities: true
+entities:
+- name
+- email
+- concertname
+- ticket_type
+- like_music
+- order_id
+slots:
+  concerts:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  venues:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  likes_music:
+    type: rasa.shared.core.slots.BooleanSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  email:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  concertname:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  ticket_type:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  order_id:
+    type: rasa.shared.core.slots.FloatSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey there!
+  - text: Hello!
+  - text: Hi!
+  utter_goodbye:
+  - text: Goodbye :(
+  - text: Bye
+  - text: See you
+  utter_default:
+  - text: Sorry, I didn't get that, can you rephrase?
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_get_started:
+  - text: I can help you find concerts and venues. Do you like music?
+  utter_awesome:
+  - text: |-
+      Awesome! You can ask me things like
+      "Find me some concerts"or 
+      "What's a good venue"or 
+      "compare reviews"or 
+      "i want a aritificial service"or 
+      "i want to track an order" or 
+      "i want to reserve a ticket for some concert"
+  utter_unvalid_email:
+  - text: Wrong email format
+  utter_wrong_concertname:
+  - text: We don't have such a concert'
+  utter_slots_values:
+  - text: |-
+      I am going to help you reserve a ticket using the following parameters:
+       - name: {name}
+       - email: {email}
+       - name of concert: {concertname}
+       - type of seat: {ticket_type}
+  utter_noworries:
+  - text: You are welcome :)
+  utter_chitchat:
+  - text: chitchat
+  utter_ask_continue:
+  - text: Do you want to continue?
+  utter_order_done:
+  - text: order track done!
+  utter_order_values:
+  - text: please give me your order id!
+  utter_ask_order_id:
+  - text: please give me your order id!
+actions:
+- validate_information_form
+- action_search_concerts
+- action_search_venues
+- action_show_concert_reviews
+- action_show_venue_reviews
+- action_set_music_preference
+- action_artificial_service
+- action_remaining_seats
+- action_submit
+- validate_order_form
+- action_reset_concertname
+- action_reset_name
+- action_reset_email
+- action_reset_ticket_type
+- action_reset_order_id
+forms:
+  information_form:
+    ignored_intents:
+    - chitchat
+    required_slots:
+      concertname:
+      - entity: concertname
+        type: from_entity
+      email:
+      - entity: email
+        type: from_entity
+      name:
+      - entity: name
+        type: from_entity
+      ticket_type:
+      - entity: ticket_type
+        type: from_entity
+  order_form:
+    ignored_intents:
+    - chitchat
+    required_slots:
+      order_id:
+      - entity: order_id
+        intent: inform_order_id
+        type: from_entity
+e2e_actions: []

@@ -1,0 +1,85 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 1
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      what can you do?
+    intent: how_to_get_started
+  - action: utter_get_started
+  - user: |
+      Find me some concerts
+    intent: search_concerts
+  - action: action_search_concerts
+
+
+- story: reserve ticket
+  steps:
+  - user: |
+      im looking for a concert
+    intent: request_book_concerts
+  - action: utter_slots_values
+  - action: information_form
+  - active_loop: information_form
+  - user: |
+      I want to reserve a ticket for [Big Arena](concertname) concert
+    intent: inform
+  - action: information_form
+  - user: |
+      my email address is [7666@163.com](email)
+    intent: inform
+  - action: information_form
+  - user: |
+      i am [mike jordan](name)
+    intent: inform
+  - action: information_form
+  - user: |
+      [third](ticket_type) seat
+    intent: inform
+  - action: information_form
+  - active_loop: null
+  - action: utter_submit
+  - action: action_remaining_seats
+  - user: |
+      thanks
+    intent: thankyou
+  - action: utter_noworries
+
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: reserve order track
+  steps:
+  - user: |
+      i want to track an order
+    intent: request_order
+  - action: order_form
+  - active_loop: order_form
+  - user: |
+      my order id is [2](order_id)
+      [1](order_id)
+    intent: inform_order_id
+  - action: order_form
+  - active_loop: null
+  - action: utter_order_done
+  - user: |
+      thanks
+    intent: thankyou
+  - action: utter_noworries
