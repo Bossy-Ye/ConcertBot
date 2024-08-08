@@ -1,5 +1,5 @@
 # ConcertBot
-ConcertBot, using rasa
+ConcertBot, with rasa
 
 1.Make sure you have Rasa 2.8.1 installed with Rasa-sdk:2.8.1. 
 
